@@ -44,7 +44,12 @@ app.post("/add", (req: any, res: any) => {
     .then((result: any) => res.json(result))
     .catch((err: any) => res.status(400).json(err));
 });
-
+app.put("/update/:id", (req: any, res: any) => {
+  const { id } = req.params;
+  TodoModel.findByIdAndUpdate({ _id: id }, { done: true })
+    .then((result: any) => res.json(result))
+    .catch((err: any) => console.log(err));
+});
 app.listen(PORT, () => {
   console.log(`Todolist server listening on port ${PORT}`);
 });
