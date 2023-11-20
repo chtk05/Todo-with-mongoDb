@@ -8,7 +8,10 @@ const TodoInput = () => {
     e.preventDefault();
     axios
       .post("http://localhost:8083/add", { task: task })
-      .then((result) => console.log(result))
+      .then((result) => {
+        location.reload();
+        console.log(result);
+      })
       .catch((err) => console.log(err));
   };
   return (
